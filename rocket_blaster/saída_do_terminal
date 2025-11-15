@@ -1,0 +1,235 @@
+(base) pietro@pietro-Nitro-AN515-57:~/Documents/BasicSoftware/rocket_blaster$ gdb ./rocket_blaster_xxx
+GNU gdb (Ubuntu 12.1-0ubuntu1~22.04.2) 12.1
+Copyright (C) 2022 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+--Type <RET> for more, q to quit, c to continue without paging--c
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+GEF for linux ready, type `gef' to start, `gef config' to configure
+93 commands loaded and 5 functions added for GDB 12.1 in 0.00ms using Python engine 3.10
+Reading symbols from ./rocket_blaster_xxx...
+(No debugging symbols found in ./rocket_blaster_xxx)
+gef➤  info functions
+All defined functions:
+
+Non-debugging symbols:
+0x0000000000401000  _init
+0x00000000004010e0  puts@plt
+0x00000000004010f0  printf@plt
+0x0000000000401100  alarm@plt
+0x0000000000401110  close@plt
+0x0000000000401120  fputc@plt
+0x0000000000401130  read@plt
+0x0000000000401140  fflush@plt
+0x0000000000401150  setvbuf@plt
+0x0000000000401160  open@plt
+0x0000000000401170  perror@plt
+0x0000000000401180  exit@plt
+0x0000000000401190  _start
+0x00000000004011c0  _dl_relocate_static_pie
+0x00000000004011d0  deregister_tm_clones
+0x0000000000401200  register_tm_clones
+0x0000000000401240  __do_global_dtors_aux
+0x0000000000401270  frame_dummy
+0x0000000000401276  error
+0x00000000004012b8  cls
+0x00000000004012f5  fill_ammo
+0x00000000004014c7  banner
+0x00000000004014fa  main
+0x0000000000401589  setup
+0x00000000004015ec  _fini
+gef➤  disassemble main
+Dump of assembler code for function main:
+   0x00000000004014fa <+0>:     endbr64 
+   0x00000000004014fe <+4>:     push   rbp
+   0x00000000004014ff <+5>:     mov    rbp,rsp
+   0x0000000000401502 <+8>:     sub    rsp,0x20
+   0x0000000000401506 <+12>:    call   0x4014c7 <banner>
+   0x000000000040150b <+17>:    mov    QWORD PTR [rbp-0x20],0x0
+   0x0000000000401513 <+25>:    mov    QWORD PTR [rbp-0x18],0x0
+   0x000000000040151b <+33>:    mov    QWORD PTR [rbp-0x10],0x0
+   0x0000000000401523 <+41>:    mov    QWORD PTR [rbp-0x8],0x0
+   0x000000000040152b <+49>:    mov    rax,QWORD PTR [rip+0x3ade]        # 0x405010 <stdout@GLIBC_2.2.5>
+   0x0000000000401532 <+56>:    mov    rdi,rax
+   0x0000000000401535 <+59>:    call   0x401140 <fflush@plt>
+   0x000000000040153a <+64>:    lea    rax,[rip+0x2597]        # 0x403ad8
+   0x0000000000401541 <+71>:    mov    rdi,rax
+   0x0000000000401544 <+74>:    mov    eax,0x0
+   0x0000000000401549 <+79>:    call   0x4010f0 <printf@plt>
+   0x000000000040154e <+84>:    mov    rax,QWORD PTR [rip+0x3abb]        # 0x405010 <stdout@GLIBC_2.2.5>
+   0x0000000000401555 <+91>:    mov    rdi,rax
+   0x0000000000401558 <+94>:    call   0x401140 <fflush@plt>
+   0x000000000040155d <+99>:    lea    rax,[rbp-0x20]
+   0x0000000000401561 <+103>:   mov    edx,0x66
+   0x0000000000401566 <+108>:   mov    rsi,rax
+   0x0000000000401569 <+111>:   mov    edi,0x0
+   0x000000000040156e <+116>:   call   0x401130 <read@plt>
+   0x0000000000401573 <+121>:   lea    rax,[rip+0x25e7]        # 0x403b61
+   0x000000000040157a <+128>:   mov    rdi,rax
+   0x000000000040157d <+131>:   call   0x4010e0 <puts@plt>
+   0x0000000000401582 <+136>:   mov    eax,0x0
+   0x0000000000401587 <+141>:   leave  
+   0x0000000000401588 <+142>:   ret    
+End of assembler dump.
+gef➤  disassemble banner
+Dump of assembler code for function banner:
+   0x00000000004014c7 <+0>:     endbr64 
+   0x00000000004014cb <+4>:     push   rbp
+   0x00000000004014cc <+5>:     mov    rbp,rsp
+   0x00000000004014cf <+8>:     lea    rax,[rip+0xb32]        # 0x402008
+   0x00000000004014d6 <+15>:    mov    rdx,rax
+   0x00000000004014d9 <+18>:    lea    rax,[rip+0xbd6]        # 0x4020b6
+   0x00000000004014e0 <+25>:    mov    rsi,rax
+   0x00000000004014e3 <+28>:    lea    rax,[rip+0xca6]        # 0x402190
+   0x00000000004014ea <+35>:    mov    rdi,rax
+   0x00000000004014ed <+38>:    mov    eax,0x0
+   0x00000000004014f2 <+43>:    call   0x4010f0 <printf@plt>
+   0x00000000004014f7 <+48>:    nop
+   0x00000000004014f8 <+49>:    pop    rbp
+   0x00000000004014f9 <+50>:    ret    
+End of assembler dump.
+gef➤  disassemble puts@plt 
+No symbol table is loaded.  Use the "file" command.
+gef➤  disassemble _start
+Dump of assembler code for function _start:
+   0x0000000000401190 <+0>:     endbr64 
+   0x0000000000401194 <+4>:     xor    ebp,ebp
+   0x0000000000401196 <+6>:     mov    r9,rdx
+   0x0000000000401199 <+9>:     pop    rsi
+   0x000000000040119a <+10>:    mov    rdx,rsp
+   0x000000000040119d <+13>:    and    rsp,0xfffffffffffffff0
+   0x00000000004011a1 <+17>:    push   rax
+   0x00000000004011a2 <+18>:    push   rsp
+   0x00000000004011a3 <+19>:    xor    r8d,r8d
+   0x00000000004011a6 <+22>:    xor    ecx,ecx
+   0x00000000004011a8 <+24>:    mov    rdi,0x4014fa
+   0x00000000004011af <+31>:    call   QWORD PTR [rip+0x3e3b]        # 0x404ff0
+   0x00000000004011b5 <+37>:    hlt    
+End of assembler dump.
+gef➤  disassemble fill_ammo 
+Dump of assembler code for function fill_ammo:
+   0x00000000004012f5 <+0>:     endbr64 
+   0x00000000004012f9 <+4>:     push   rbp
+   0x00000000004012fa <+5>:     mov    rbp,rsp
+   0x00000000004012fd <+8>:     sub    rsp,0x30
+   0x0000000000401301 <+12>:    mov    QWORD PTR [rbp-0x18],rdi
+   0x0000000000401305 <+16>:    mov    QWORD PTR [rbp-0x20],rsi
+   0x0000000000401309 <+20>:    mov    QWORD PTR [rbp-0x28],rdx
+   0x000000000040130d <+24>:    mov    esi,0x0
+   0x0000000000401312 <+29>:    lea    rax,[rip+0xd1a]        # 0x402033
+   0x0000000000401319 <+36>:    mov    rdi,rax
+   0x000000000040131c <+39>:    mov    eax,0x0
+   0x0000000000401321 <+44>:    call   0x401160 <open@plt>
+   0x0000000000401326 <+49>:    mov    DWORD PTR [rbp-0x4],eax
+   0x0000000000401329 <+52>:    cmp    DWORD PTR [rbp-0x4],0x0
+   0x000000000040132d <+56>:    jns    0x401348 <fill_ammo+83>
+   0x000000000040132f <+58>:    lea    rax,[rip+0xd0a]        # 0x402040
+   0x0000000000401336 <+65>:    mov    rdi,rax
+   0x0000000000401339 <+68>:    call   0x401170 <perror@plt>
+   0x000000000040133e <+73>:    mov    edi,0x1
+   0x0000000000401343 <+78>:    call   0x401180 <exit@plt>
+   0x0000000000401348 <+83>:    mov    eax,0xdeadbeef
+   0x000000000040134d <+88>:    cmp    QWORD PTR [rbp-0x18],rax
+   0x0000000000401351 <+92>:    je     0x40138f <fill_ammo+154>
+   0x0000000000401353 <+94>:    lea    rax,[rip+0xcb6]        # 0x402010
+   0x000000000040135a <+101>:   mov    rcx,rax
+   0x000000000040135d <+104>:   lea    rax,[rip+0xca4]        # 0x402008
+   0x0000000000401364 <+111>:   mov    rdx,rax
+   0x0000000000401367 <+114>:   lea    rax,[rip+0xca2]        # 0x402010
+   0x000000000040136e <+121>:   mov    rsi,rax
+   0x0000000000401371 <+124>:   lea    rax,[rip+0xd08]        # 0x402080
+   0x0000000000401378 <+131>:   mov    rdi,rax
+   0x000000000040137b <+134>:   mov    eax,0x0
+   0x0000000000401380 <+139>:   call   0x4010f0 <printf@plt>
+   0x0000000000401385 <+144>:   mov    edi,0x1
+   0x000000000040138a <+149>:   call   0x401180 <exit@plt>
+   0x000000000040138f <+154>:   mov    eax,0xdeadbabe
+   0x0000000000401394 <+159>:   cmp    QWORD PTR [rbp-0x20],rax
+   0x0000000000401398 <+163>:   je     0x4013dd <fill_ammo+232>
+   0x000000000040139a <+165>:   lea    r8,[rip+0xc6f]        # 0x402010
+   0x00000000004013a1 <+172>:   lea    rax,[rip+0xc60]        # 0x402008
+   0x00000000004013a8 <+179>:   mov    rcx,rax
+   0x00000000004013ab <+182>:   lea    rax,[rip+0xc5e]        # 0x402010
+   0x00000000004013b2 <+189>:   mov    rdx,rax
+   0x00000000004013b5 <+192>:   lea    rax,[rip+0xcfa]        # 0x4020b6
+   0x00000000004013bc <+199>:   mov    rsi,rax
+   0x00000000004013bf <+202>:   lea    rax,[rip+0xcfa]        # 0x4020c0
+   0x00000000004013c6 <+209>:   mov    rdi,rax
+   0x00000000004013c9 <+212>:   mov    eax,0x0
+   0x00000000004013ce <+217>:   call   0x4010f0 <printf@plt>
+   0x00000000004013d3 <+222>:   mov    edi,0x2
+   0x00000000004013d8 <+227>:   call   0x401180 <exit@plt>
+   0x00000000004013dd <+232>:   mov    eax,0xdead1337
+   0x00000000004013e2 <+237>:   cmp    QWORD PTR [rbp-0x28],rax
+   0x00000000004013e6 <+241>:   je     0x40142b <fill_ammo+310>
+   0x00000000004013e8 <+243>:   lea    r8,[rip+0xc21]        # 0x402010
+   0x00000000004013ef <+250>:   lea    rax,[rip+0xc12]        # 0x402008
+   0x00000000004013f6 <+257>:   mov    rcx,rax
+   0x00000000004013f9 <+260>:   lea    rax,[rip+0xc10]        # 0x402010
+   0x0000000000401400 <+267>:   mov    rdx,rax
+   0x0000000000401403 <+270>:   lea    rax,[rip+0xcac]        # 0x4020b6
+   0x000000000040140a <+277>:   mov    rsi,rax
+   0x000000000040140d <+280>:   lea    rax,[rip+0xcec]        # 0x402100
+   0x0000000000401414 <+287>:   mov    rdi,rax
+   0x0000000000401417 <+290>:   mov    eax,0x0
+   0x000000000040141c <+295>:   call   0x4010f0 <printf@plt>
+   0x0000000000401421 <+300>:   mov    edi,0x3
+   0x0000000000401426 <+305>:   call   0x401180 <exit@plt>
+   0x000000000040142b <+310>:   lea    rax,[rip+0xc84]        # 0x4020b6
+   0x0000000000401432 <+317>:   mov    rsi,rax
+   0x0000000000401435 <+320>:   lea    rax,[rip+0xd04]        # 0x402140
+   0x000000000040143c <+327>:   mov    rdi,rax
+   0x000000000040143f <+330>:   mov    eax,0x0
+   0x0000000000401444 <+335>:   call   0x4010f0 <printf@plt>
+   0x0000000000401449 <+340>:   mov    rax,QWORD PTR [rip+0x3bd0]        # 0x405020 <stdin@GLIBC_2.2.5>
+   0x0000000000401450 <+347>:   mov    rdi,rax
+   0x0000000000401453 <+350>:   call   0x401140 <fflush@plt>
+   0x0000000000401458 <+355>:   mov    rax,QWORD PTR [rip+0x3bb1]        # 0x405010 <stdout@GLIBC_2.2.5>
+   0x000000000040145f <+362>:   mov    rdi,rax
+   0x0000000000401462 <+365>:   call   0x401140 <fflush@plt>
+   0x0000000000401467 <+370>:   jmp    0x401481 <fill_ammo+396>
+   0x0000000000401469 <+372>:   movzx  eax,BYTE PTR [rbp-0x5]
+   0x000000000040146d <+376>:   movsx  eax,al
+   0x0000000000401470 <+379>:   mov    rdx,QWORD PTR [rip+0x3b99]        # 0x405010 <stdout@GLIBC_2.2.5>
+   0x0000000000401477 <+386>:   mov    rsi,rdx
+   0x000000000040147a <+389>:   mov    edi,eax
+   0x000000000040147c <+391>:   call   0x401120 <fputc@plt>
+   0x0000000000401481 <+396>:   lea    rcx,[rbp-0x5]
+   0x0000000000401485 <+400>:   mov    eax,DWORD PTR [rbp-0x4]
+   0x0000000000401488 <+403>:   mov    edx,0x1
+   0x000000000040148d <+408>:   mov    rsi,rcx
+   0x0000000000401490 <+411>:   mov    edi,eax
+   0x0000000000401492 <+413>:   call   0x401130 <read@plt>
+   0x0000000000401497 <+418>:   test   rax,rax
+   0x000000000040149a <+421>:   jg     0x401469 <fill_ammo+372>
+   0x000000000040149c <+423>:   mov    eax,DWORD PTR [rbp-0x4]
+   0x000000000040149f <+426>:   mov    edi,eax
+   0x00000000004014a1 <+428>:   call   0x401110 <close@plt>
+   0x00000000004014a6 <+433>:   mov    rax,QWORD PTR [rip+0x3b73]        # 0x405020 <stdin@GLIBC_2.2.5>
+   0x00000000004014ad <+440>:   mov    rdi,rax
+   0x00000000004014b0 <+443>:   call   0x401140 <fflush@plt>
+   0x00000000004014b5 <+448>:   mov    rax,QWORD PTR [rip+0x3b54]        # 0x405010 <stdout@GLIBC_2.2.5>
+   0x00000000004014bc <+455>:   mov    rdi,rax
+   0x00000000004014bf <+458>:   call   0x401140 <fflush@plt>
+   0x00000000004014c4 <+463>:   nop
+   0x00000000004014c5 <+464>:   leave  
+   0x00000000004014c6 <+465>:   ret    
+End of assembler dump.
+gef➤  checksec
+[+] checksec for '/home/pietro/Documents/BasicSoftware/rocket_blaster/rocket_blaster_xxx'
+Canary                        : ✘ 
+NX                            : ✓ 
+PIE                           : ✘ 
+Fortify                       : ✘ 
+RelRO                         : Full
+gef➤  
