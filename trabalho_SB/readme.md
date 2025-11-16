@@ -28,7 +28,7 @@ Quando uma alocação é solicitada, o algoritmo calcula o tamanho total necess�
 
 Durante a varredura, ele lê o cabeçalho de cada bloco (pulando para o próximo usando o "tamanho" armazenado) e procura pelo bloco livre que seja, simultaneamente, (1) grande o suficiente para a requisição e (2) o maior bloco livre encontrado até o momento.
 
-Se um bloco adequado (o "pior encaixe") é encontrado, o algoritmo tenta dividi-lo (Split). Se o espaço restante for suficiente para um novo bloco mínimo (10 bytes), o bloco é dividido: o novo bloco "resto" é marcado como livre e o bloco original é encolhido. O bloco encontrado é então marcado como ocupado (0) e o ponteiro para a área de dados (endereço do cabeçalho + 9) é retornado.
+Se um bloco adequado (o "pior encaixe") é encontrado, o algoritmo tenta dividi-lo. Se o espaço restante for suficiente para um novo bloco mínimo (10 bytes), o bloco é dividido: o novo bloco é marcado como livre e o bloco original é encolhido. O bloco encontrado é então marcado como ocupado (0) e o ponteiro para a área de dados (endereço do cabeçalho + 9) é retornado.
 
 Se nenhum bloco livre for encontrado, o alocador expande a heap. Ele chama a syscall brk para mover o topo da heap, alocando exatamente o espaço necessário. Um novo cabeçalho é escrito nesse espaço (marcado como ocupado) e o ponteiro é retornado.
 
@@ -37,6 +37,6 @@ A função memory_free é responsável por liberar um bloco e otimizar a heap.
 
 Primeiro, ela realiza validações de segurança, verificando se o ponteiro não é nulo e se o bloco já não está livre (proteção contra "double free"). O bloco é então marcado como livre (status = 1).
 
-Imediatamente após marcar como livre, o algoritmo implementa a otimização de "União (Coalescing) para a Frente". Ele calcula o endereço do bloco imediatamente posterior (usando o tamanho do bloco atual). Ele verifica se esse bloco posterior está dentro dos limites da heap (comparando com sbrk(0)) e se ele também está marcado como livre.
+Imediatamente após marcar como livre, o algoritmo implementa a otimização de "União/Coalescing para a Frente". Ele calcula o endereço do bloco imediatamente posterior (usando o tamanho do bloco atual). Ele verifica se esse bloco posterior está dentro dos limites da heap (comparando com sbrk(0)) e se ele também está marcado como livre.
 
 Se ambos os blocos (o atual e o posterior) estiverem livres, eles são unidos: o tamanho do bloco posterior é somado ao tamanho do bloco atual, e o resultado é escrito no cabeçalho do bloco atual. Isso combate a fragmentação externa, criando "buracos" livres maiores que podem ser reutilizados pelo memory_alloc.
