@@ -7,6 +7,7 @@
 .global dismiss_brk
 
 
+# Defines utilizados
 .equ CABECALHO_TAM, 9       # Tamanho total do cabeçalho
 .equ OFFSET_ESTALIVRE, 0    # Offset do flag 'livre' (1 byte)
 .equ OFFSET_TAMANHO, 1      # Offset do tamanho (8 bytes)
